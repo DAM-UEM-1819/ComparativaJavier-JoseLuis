@@ -2,18 +2,39 @@ import java.util.Arrays;
 
 public class Modelo1 {
 	public String suma1(String num) {
-		return "Sin hacer";
-	}
+		int numero=Integer.parseInt(num);
+		numero++;
+		int decimal=Integer.parseInt(num,16);  
+		decimal++;
+		String letra="";
+		if(numero<10) {
+			return num;
+		}else {
+			if(numero==10) {
+				letra="a";
+			}else if(numero==11) {
+				letra="b";
+			}else if(numero==12) {
+				letra="c";
+			}else if(numero==13) {
+				letra="d";
+			}else if(numero==14) {
+				letra="e";
+			}
+			else if(numero==15) {
+				letra="f";
+			}
+		}
+			return letra;
+		}  
 
 	public int comprobarCP(String cp) {
-		int con = 0;
 		if (cp.length() != 5) {
 			return 2;
 		} else {
-			for (int i = 0; i < cp.length(); i++) {
-				int tabla_ascii = cp.charAt(i);
-				if (tabla_ascii > 47 && tabla_ascii < 58) {
-					con++;
+			for (int j = 0; j < cp.length(); j++) {
+				int valorascii = (int) cp.charAt(j);
+				if (valorascii > 47 && valorascii < 58) {
 				} else {
 					return 3;
 				}
@@ -23,38 +44,37 @@ public class Modelo1 {
 	}
 
 	public String mayusculas(String palabra) {
-		String palabraDefinitiva = "";
-		palabra = palabra.toLowerCase();
-		char[] arrayCaracteres = palabra.toCharArray();
+		String aux = "";
+		char[] letraarray = palabra.toCharArray();
 		for (int i = 0; i < palabra.length(); i++) {
-			int ascii = palabra.charAt(i);
-			if (ascii == 97 || ascii == 101 || ascii == 111 || ascii == 105 || ascii == 117) {
-				arrayCaracteres[i] = Character.toUpperCase(arrayCaracteres[i]);
+			int valorascii = (int) palabra.charAt(i);
+			if (valorascii == 97 || valorascii == 101 || valorascii == 105 || valorascii == 111 || valorascii == 117) {
+				letraarray[i] = Character.toUpperCase(letraarray[i]);
 			}
-			palabraDefinitiva = palabraDefinitiva + arrayCaracteres[i];
+			aux = aux + letraarray[i];
 		}
-		return palabraDefinitiva;
+		return aux;
 	}
 
 	public String orden(String[] nums) {
-		String ordenadosParesImpares = "";
-		String impares = "";
-		int[] numeros = new int[nums.length];
+		String pares = "";
+		String ordenados = "";
+		int[] aux = new int[nums.length];
 		for (int i = 0; i < nums.length; i++) {
-			numeros[i] = Integer.parseInt(nums[i]);
+			aux[i] = Integer.parseInt(nums[i]);
 		}
-		Arrays.sort(numeros);
-		for (int i : numeros) {
+		Arrays.sort(aux);
+		for (int i : aux) {
 			System.out.println(i);
 		}
-		for (int i = 0; i < numeros.length; i++) {
-			if (numeros[i] % 2 == 0) {
-				ordenadosParesImpares += Integer.toString(numeros[i]);
+		for (int i = 0; i < aux.length; i++) {
+			if (aux[i] % 2 != 0) {
+				ordenados += Integer.toString(aux[i]);
 			} else {
-				impares += Integer.toString(numeros[i]);
+				pares += Integer.toString(aux[i]);
 			}
 		}
-		ordenadosParesImpares += impares;
-		return ordenadosParesImpares;
+		ordenados += pares;
+		return ordenados;
 	}
 }

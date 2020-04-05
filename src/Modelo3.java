@@ -8,83 +8,83 @@ import java.io.OutputStream;
 import java.util.Properties;
 
 public class Modelo3 {
-	FileInputStream entrada;
-	FileOutputStream salida;
-	Properties propiedades;
-	File fichero;
+	Properties properties;
+	File file;
+	FileInputStream imput;
+	FileOutputStream output;
 
 	public String getUsr() {
-		propiedades = new Properties();
+		properties = new Properties();
 		File fichero;
 		fichero = new File("src/Recuperacion/Config.ini");
 		try {
-			entrada = new FileInputStream(fichero);
-			salida = new FileOutputStream(fichero, true);
-			propiedades.load(entrada);
-		} catch (Exception e1) {
-			e1.printStackTrace();
+			imput = new FileInputStream(fichero);
+			output = new FileOutputStream(fichero, true);
+			properties.load(imput);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		String usr = propiedades.getProperty("usuario");
-		return usr;
+		String usuario = properties.getProperty("usuario");
+		return usuario;
 	}
 
 	public String getPwd() {
-		fichero = new File("src/Recuperacion/Config.ini");
+		file = new File("src/Recuperacion/Config.ini");
 		try {
-			entrada = new FileInputStream(fichero);
-			salida = new FileOutputStream(fichero, true);
-			propiedades.load(entrada);
-		} catch (Exception e1) {
-			e1.printStackTrace();
+			imput = new FileInputStream(file);
+			output = new FileOutputStream(file, true);
+			properties.load(imput);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		String pwd = propiedades.getProperty("passwd");
-		return pwd;
+		String contra = properties.getProperty("contraseña");
+		return contra;
 	}
 
 	public String getUrl() {
-		fichero = new File("src/Recuperacion/Config.ini");
+		file = new File("src/Recuperacion/Config.ini");
 		try {
-			entrada = new FileInputStream(fichero);
-			salida = new FileOutputStream(fichero, true);
-			propiedades.load(entrada);
+			imput = new FileInputStream(file);
+			output = new FileOutputStream(file, true);
+			properties.load(imput);
 		} catch (Exception e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String url = propiedades.getProperty("url");
+		String url = properties.getProperty("url");
 		return url;
 	}
 
 	public String getNotes() {
-		fichero = new File("src/Recuperacion/Config.ini");
+		file = new File("src/Recuperacion/Config.ini");
 		try {
-			entrada = new FileInputStream(fichero);
-			salida = new FileOutputStream(fichero, true);
-			propiedades.load(entrada);
-		} catch (Exception e1) {
-			e1.printStackTrace();
+			imput = new FileInputStream(file);
+			output = new FileOutputStream(file, true);
+			properties.load(imput);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		String notes = propiedades.getProperty("notes");
-		return notes;
+		String notas = properties.getProperty("notas");
+		return notas;
 	}
 
 	public String setData(String usr, String pwd, String url, String notes) {
-		fichero = new File("src/Recuperacion/Config.ini");
+		file = new File("src/Recuperacion/Config.ini");
 		try {
-			entrada = new FileInputStream(fichero);
-			salida = new FileOutputStream(fichero, true);
-			propiedades.load(entrada);
+			imput = new FileInputStream(file);
+			output = new FileOutputStream(file, true);
+			properties.load(imput);
 		} catch (Exception e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		propiedades.setProperty("usuario", usr);
-		propiedades.setProperty("passwd", pwd);
-		propiedades.setProperty("url", url);
-		propiedades.setProperty("notes", notes);
-		try {
-			propiedades.store(salida, "Comentario para el fichero");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		properties.setProperty("usuario", usr);
+		properties.setProperty("contraseña", pwd);
+		properties.setProperty("url", url);
+		properties.setProperty("notas", notes);
 		return "hecho";
 	}
 }
